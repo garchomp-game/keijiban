@@ -1,0 +1,18 @@
+.original_link_button{
+    height:100%;
+    width:100%;
+    display:block;
+    color:gray;
+    padding:80px 10px;
+    font-size:36px;
+    text-align:center;
+}
+.original_link_button:hover{
+    color:gray;
+    text-decoration: none;
+    background-color:rgba(0,0,0,.2);
+}
+.original_home_ul_group li{
+    padding:0;
+    margin: 30px 0;
+}
