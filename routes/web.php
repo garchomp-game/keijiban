@@ -15,6 +15,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('root_path');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('boads', 'BoadsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
