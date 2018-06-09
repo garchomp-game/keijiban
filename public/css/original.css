@@ -22,10 +22,15 @@
 }
 .original-table-style {
     height:60px;
-    vertical-align: bottom;
+    vertical-align: top;
 }
 
 .original-span-with {
     width:80%;
     display:block;
+}
+
+.original-button {
+    width:150px;
+    margin:5px 0;
 }

@@ -11,9 +11,9 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Chat $chat)
     {
-        //
+        return view('chat.index')->with($chat);
     }
 
     /**
@@ -23,7 +23,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-        //
+        // return view('chat.create')->with();
     }
 
     /**
@@ -34,7 +34,8 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Chat::create($request->all());
+        return view('chat.index')->with();
     }
 
     /**
@@ -45,7 +46,7 @@ class ChatController extends Controller
      */
     public function show($id)
     {
-        //
+        // return view('chat.show')->with();
     }
 
     /**
@@ -56,7 +57,7 @@ class ChatController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return view('chat.edit')->with();
     }
 
     /**
@@ -66,9 +67,10 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Chat $chat)
     {
-        //
+        $chat->update($request->all());
+        return view('chat.update')->with();
     }
 
     /**
@@ -77,8 +79,9 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Chat $chat)
     {
-        //
+        $chat->destroy();
+        return view('chat.destroy')->with();
     }
 }

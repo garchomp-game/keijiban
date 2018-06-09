@@ -16,27 +16,23 @@
                     <table class="table table-condensed table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th class="text-center">タイトル</th>
-
-                                <th class="text-right">詳細</th>
+                                <th class="text-center">リスト</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($boards as $board)
                                 <tr>
-                                    <td class="original-table-style text-center"><strong>{{$board->title}}</strong></td>
-                                    <td class="original-table-style text-right">
-                                        <span class="text-left original-span-with">{{mb_strimwidth_ja($board->description, 0, 90    , '…', 'UTF-8')}}</span>
-                                        <a class="btn btn-xs btn-primary" href="{{ route('boards.show', $board->id) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i>
-                                        </a>
-                                        <a class="btn btn-xs btn-warning" href="{{ route('boards.edit', $board->id) }}">
-                                            <i class="glyphicon glyphicon-edit"></i>
-                                        </a>
-                                        {{Form::open(['route' => ['boards.destroy', $board->id], 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
-
-                                            <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
-                                        {{Form::close()}}
+                                    <td class="original-table-style">
+                                        <div class="pull-right">
+                                            <a class="btn btn-md btn-primary original-button" href="{{ route('boards.edit', $board->id) }}"><i class="glyphicon glyphicon-list"></i>　掲示板へ</i></a><br>
+                                            @if ($board->user_id == auth()->user()->id)
+                                                {{Form::open(['route' => ['boards.destroy', $board->id], 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
+                                                <button type="submit" class="btn btn-md  btn-danger original-button"><i class="glyphicon glyphicon-trash"></i>　削　　除</button>
+                                                {{Form::close()}}
+                                            @endif
+                                        </div>
+                                        <strong class="pull-left original-span-with">{{$board->title}}</strong>
+                                        <span class="pull-left original-span-with">{{$board->description}}</span>
                                     </td>
                                 </tr>
                             @endforeach
