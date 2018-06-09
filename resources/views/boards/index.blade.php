@@ -13,7 +13,7 @@
 
             <div class="panel-body">
                 @if($boards->count())
-                    <table class="table table-condensed table-striped">
+                    <table class="table table-condensed table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">タイトル</th>
@@ -21,19 +21,15 @@
                                 <th class="text-right">詳細</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach($boards as $board)
                                 <tr>
-                                    <td class="text-center"><strong>{{$board->id}}</strong></td>
-
-
-
-                                    <td class="text-right">
+                                    <td class="original-table-style text-center"><strong>{{$board->title}}</strong></td>
+                                    <td class="original-table-style text-right">
+                                        <span class="text-left original-span-with">{{mb_strimwidth_ja($board->description, 0, 90    , '…', 'UTF-8')}}</span>
                                         <a class="btn btn-xs btn-primary" href="{{ route('boards.show', $board->id) }}">
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                         </a>
-
                                         <a class="btn btn-xs btn-warning" href="{{ route('boards.edit', $board->id) }}">
                                             <i class="glyphicon glyphicon-edit"></i>
                                         </a>

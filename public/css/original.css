@@ -12,11 +12,20 @@
     text-decoration: none;
     background-color:rgba(0,0,0,.2);
 }
-.original_home_ul_group li{
+.original_home_ul_group li {
     padding:0;
     margin: 30px 0;
 }
 
-.form_inline{
+.form_inline {
     display:inline;
+}
+.original-table-style {
+    height:60px;
+    vertical-align: bottom;
+}
+
+.original-span-with {
+    width:80%;
+    display:block;
 }
