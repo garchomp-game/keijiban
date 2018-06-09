@@ -15,7 +15,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('root_path');
+Route::get('/home', 'HomeController@index')->name('root_path');
 
-Route::resource('boads', 'BoadsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('profile', 'ProfileController')->middleware('auth');
+
+Route::resource('boards', 'BoardsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']])->middleware('auth');

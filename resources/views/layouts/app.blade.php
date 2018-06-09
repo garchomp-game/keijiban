@@ -73,7 +73,7 @@
                                     </form>
                                 </li>
                                 <li><a href="{{ route('profile.index') }}">マイページ</a></li>
-                                <li><a href="{{ route('boads.index') }}">掲示板一覧</a></li>
+                                <li><a href="{{ route('boards.index') }}">掲示板一覧</a></li>
                             </ul>
                         </li>
                     @endguest

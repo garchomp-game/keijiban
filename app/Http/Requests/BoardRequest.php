@@ -1,9 +1,15 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Foundation\Http\FormRequest;
 
-class BoadRequest extends Request
+class BoardRequest extends FormRequest
 {
+    public function authorize()
+    {
+        return true;
+    }
+
     public function rules()
     {
         switch($this->method())
@@ -12,7 +18,8 @@ class BoadRequest extends Request
             case 'POST':
             {
                 return [
-                    // CREATE ROLES
+                    'title' => 'required',
+                    'description' => 'required',
                 ];
             }
             // UPDATE
@@ -35,7 +42,7 @@ class BoadRequest extends Request
     public function messages()
     {
         return [
-            // Validation messages
+
         ];
     }
 }

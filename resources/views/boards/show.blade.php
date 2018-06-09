@@ -6,30 +6,24 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Boad / Show #{{ $boad->id }}</h1>
+                <h1>Board / Show #{{ $board->id }}</h1>
             </div>
 
             <div class="panel-body">
                 <div class="well well-sm">
                     <div class="row">
                         <div class="col-md-6">
-                            <a class="btn btn-link" href="{{ route('boads.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
+                            <a class="btn btn-link" href="{{ route('boards.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
                         </div>
                         <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('boads.edit', $boad->id) }}">
+                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('boards.edit', $board->id) }}">
                                 <i class="glyphicon glyphicon-edit"></i> Edit
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <label>User_id</label>
-<p>
-	{{ $boad->user_id }}
-</p> <label>Comment</label>
-<p>
-	{{ $boad->comment }}
-</p>
+                
             </div>
         </div>
     </div>
