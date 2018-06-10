@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Chat;
+use App\Models\Board;
 
 class ChatController extends Controller
 {
@@ -47,8 +48,11 @@ class ChatController extends Controller
      */
     public function show($id, Request $request)
     {
-        $chats = Chat::where('boards_id', $id)->get();
-        return view('chat.index', compact('chats'));
+        $chats = Chat::where('boards_id', $id)->orderBy('id', 'desc')->get();
+        return view('chat.index', [
+            'chats' => $chats,
+            'board' => Board::find($id),
+        ]);
     }
 
     /**

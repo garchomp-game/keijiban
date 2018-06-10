@@ -52,9 +52,12 @@ class BoardsController extends Controller
 
 	public function destroy(Board $board)
 	{
-		$this->authorize('destroy', $board);
-		$board->delete();
-
-		return redirect()->route('boards.index')->with('message', 'Deleted successfully.');
+            \DB::transaction(function () use($board) {
+                foreach ($board->chats as $value) {
+                    $value->delete();
+                }
+                $board->delete();
+            });
+		return redirect()->route('boards.index');
 	}
 }

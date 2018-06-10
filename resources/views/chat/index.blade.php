@@ -5,6 +5,8 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default original-chat-bord" id="ul_list">
             <div class="panel-body">
+                <h2>{{$board->title}}</h2>
+                <hr style="border: black solid 1px">
                 <ul class="list-group">
                     @if($chats->count())
                         @foreach($chats as $chat)
