@@ -35,8 +35,8 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        Chat::create($request->all());
-        return view('chat.index')->with();
+        $chats = Chat::create($request->all());
+        return redirect()->route('chat.show', $chats->boards_id);
     }
 
     /**
@@ -45,9 +45,9 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        $chats = Chat::where('id', $id)->get();
+        $chats = Chat::where('boards_id', $id)->get();
         return view('chat.index', compact('chats'));
     }
 
