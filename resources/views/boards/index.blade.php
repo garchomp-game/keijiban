@@ -13,32 +13,26 @@
 
             <div class="panel-body">
                 @if($boards->count())
-                    <table class="table table-condensed table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">リスト</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($boards as $board)
-                                <tr>
-                                    <td class="original-table-style">
-                                        <div class="pull-right">
-                                            <a class="btn btn-md btn-primary original-button" href="{{ route('boards.edit', $board->id) }}"><i class="glyphicon glyphicon-list"></i>　掲示板へ</i></a><br>
-                                            @if ($board->user_id == auth()->user()->id)
-                                                {{Form::open(['route' => ['boards.destroy', $board->id], 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
-                                                <button type="submit" class="btn btn-md  btn-danger original-button"><i class="glyphicon glyphicon-trash"></i>　削　　除</button>
-                                                {{Form::close()}}
-                                            @endif
-                                        </div>
-                                        <strong class="pull-left original-span-with">{{$board->title}}</strong>
-                                        <span class="pull-left original-span-with">{{$board->description}}</span>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {!! $boards->render() !!}
+                <ul class="list-group">
+                @foreach($boards as $board)
+                        <li class="original-table-style list-group-item">
+                            <h3 class="pull-left" style="display:block; margin:0 0 10px;">{{$board->title}}</h3>
+                            <div style="clear:both"></div>
+                            <span class="pull-left original-span-with" style="float:left;">{{$board->description}}</span><br>
+                            <div style="clear:both"></div>
+                            <span class="pull-right">
+                                <a class="btn btn-md btn-success original-button" href="{{ route('boards.show', $board->id) }}"><i class="glyphicon glyphicon-list"></i> 掲示板詳細</i></a>
+                                @if ($board->user_id == auth()->user()->id)
+                                    {{Form::open(['route' => ['boards.destroy', $board->id], 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
+                                    <button type="submit" class="btn btn-md  btn-danger original-button"><i class="glyphicon glyphicon-trash"></i> 削　除</button>
+                                    {{Form::close()}}
+                                @endif
+                            </span>
+                            <div style="clear:both"></div>
+                        </li>
+                @endforeach
+                </ul>
+                {!! $boards->render() !!}
                 @else
                     <h3 class="text-center alert alert-info">まだ掲示板がありません</h3>
                 @endif

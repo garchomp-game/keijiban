@@ -21,3 +21,4 @@ Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'create
 Route::resource('profile', 'ProfileController')->middleware('auth');
 
 Route::resource('boards', 'BoardsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']])->middleware('auth');
+Route::resource('chat', 'ChatController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']])->middleware('auth');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Chat;
 
 class ChatController extends Controller
 {
@@ -11,9 +12,9 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Chat $chat)
+    public function index($id)
     {
-        return view('chat.index')->with($chat);
+        // return view('chat.index')->compact('chats');
     }
 
     /**
@@ -46,7 +47,8 @@ class ChatController extends Controller
      */
     public function show($id)
     {
-        // return view('chat.show')->with();
+        $chats = Chat::where('id', $id)->get();
+        return view('chat.index', compact('chats'));
     }
 
     /**
@@ -57,7 +59,7 @@ class ChatController extends Controller
      */
     public function edit($id)
     {
-        // return view('chat.edit')->with();
+        return view('chat.edit')->with();
     }
 
     /**

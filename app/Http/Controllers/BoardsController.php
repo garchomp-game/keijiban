@@ -22,7 +22,7 @@ class BoardsController extends Controller
 
     public function show(Board $board)
     {
-        return view('boards.show', compact('board'));
+        return redirect()->route('chat.show', $board->id);
     }
 
 	public function create(Board $board)

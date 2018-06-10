@@ -21,16 +21,15 @@
     display:inline;
 }
 .original-table-style {
-    height:60px;
-    vertical-align: top;
+    display:block;
 }
 
 .original-span-with {
-    width:80%;
     display:block;
 }
 
 .original-button {
-    width:150px;
-    margin:5px 0;
+    width:120px;
+    margin:10px;
+    display:inline-block;
 }
