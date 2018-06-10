@@ -15,3 +15,10 @@ function mb_strimwidth_ja($str, $start, $width, $trimmarker="", $encoding=null) 
         return $str;
     }
 }
+
+function user($key, $str = null) {
+    if (isset($str) && auth()->user()->$key == null) {
+        return $str;
+    }
+    return auth()->user()->$key;
+}

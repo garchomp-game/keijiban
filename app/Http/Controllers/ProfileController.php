@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
@@ -56,7 +57,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('profile.edit');
     }
 
     /**
@@ -66,9 +67,14 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        //
+        $profile->name = $request['name'];
+        $profile->sex = $request['sex'];
+        $profile->hobby = $request['hobby'];
+        $profile->description = $request['description'];
+        $profile->save();
+        return redirect()->route('profile.index');
     }
 
     /**
