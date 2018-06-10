@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\Models\Board;
-
+use App\Http\Requests\ChatRequest;
 class ChatController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChatRequest $request)
     {
         $chats = Chat::create($request->all());
         return redirect()->route('chat.show', $chats->boards_id);

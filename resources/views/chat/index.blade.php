@@ -30,6 +30,9 @@
         </div>
         {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
             <p>コメント</p>
+            @if ($errors->first('comment'))
+                <p style="color:red;">{{$errors->first('comment')}}</p>
+            @endif
             <input type="hidden" name="boards_id" value="{{request()->chat}}">
             <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
             <textarea class="form-control" name="comment" rows="6"></textarea>

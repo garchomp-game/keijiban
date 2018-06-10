@@ -23,7 +23,7 @@
                             <span class="pull-right">
                                 <a class="btn btn-md btn-success original-button" href="{{ route('boards.show', $board->id) }}"><i class="glyphicon glyphicon-list"></i> 掲示板詳細</i></a>
                                 @if ($board->user_id == auth()->user()->id)
-                                    {{Form::open(['route' => ['boards.destroy', $board->id], 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
+                                    {{Form::open(['route' => ['boards.destroy', $board->id], 'method' => 'delete', 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
                                     <button type="submit" class="btn btn-md  btn-danger original-button"><i class="glyphicon glyphicon-trash"></i> 削　除</button>
                                     {{Form::close()}}
                                 @endif
