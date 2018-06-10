@@ -52,3 +52,14 @@
     width:90%;
     float:right;
 }
+
+.original-chat-link-button {
+    display:block;
+    color:black;
+    height:100%;
+    width:100%;
+}
+.original-chat-link-button:hover {
+    color:black;
+    text-decoration:none;
+}

@@ -44,9 +44,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Profile $profile)
     {
-        //
+        if (user('id') == $profile->id) {
+            return view('profile.index');
+        }
+        return view('profile.show', compact('profile'));
     }
 
     /**

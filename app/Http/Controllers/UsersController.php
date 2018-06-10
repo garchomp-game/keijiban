@@ -14,12 +14,6 @@ class UsersController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
-	{
-		$users = User::paginate();
-		return view('users.index', compact('users'));
-	}
-
     public function show(User $user)
     {
         return view('users.show', compact('user'));

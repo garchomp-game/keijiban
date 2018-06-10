@@ -10,12 +10,17 @@
                 <ul class="list-group">
                     @if($chats->count())
                         @foreach($chats as $chat)
-                            <li class="list-group-item original-list-group-item" id="msg_id{{$chat->id}}">
-                                <p style="margin:0;">{{$chat->user->name}}</p>
-                                <hr style="margin:10px 0;">
-                                <span class=" original-span-with original-comment-style">{{$chat->comment}}</span>
-                                <div style="clear:both"></div>
-                            </li>
+                                <li class="list-group-item original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
+                                    {{-- TODO:モーダル表示 --}}
+                                    {{-- <a class="original-chat-link-button" href="#user_modal" rel="modal:open"> --}}
+                                    <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
+                                        <p style="margin:0;">{{$chat->user->name}}</p>
+                                        <hr style="margin:10px 0;">
+                                        <span class=" original-span-with original-comment-style">{{$chat->comment}}</span>
+                                        <div style="clear:both"></div>
+                                    </a>
+                                    {{-- </a> --}}
+                                </li>
                         @endforeach
                     @else
                         <li class="list-group-item">まだ投稿がありません</li>
@@ -32,6 +37,12 @@
         {{Form::close()}}
     </div>
 </div>
+{{-- TODO:モーダル表示 --}}
+{{-- <div id="user_modal" class="modal">
+  <p></p>
+  <a href="#" rel="modal:close">Close</a>
+</div> --}}
+
 <script type="text/javascript">
     $(function() {
         $("#msg_id{{$chats->count()}}").click;
