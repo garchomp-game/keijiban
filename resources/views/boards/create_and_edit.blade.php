@@ -26,9 +26,9 @@
                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                     <div class="form-group">
                         <h3>タイトル</h3>
-                        <input type="text" class="form-control" name="title" value="{{old('title')}}">
+                        <input type="text" class="form-control" name="title" value="{{old('title', $board->title)}}">
                         <h3>内容</h3>
-                        <textarea name="description" style="margin-bottom: 15px;" class="form-control" rows="8" cols="80">{{old('description')}}</textarea>
+                        <textarea name="description" style="margin-bottom: 15px;" class="form-control" rows="8" cols="80">{{old('description', $board->description)}}</textarea>
                         <button type="submit" class="btn btn-primary">登録</button>
                         <a class="btn btn-link pull-right" href="{{ route('boards.index') }}"><i class="glyphicon glyphicon-backward"></i> 戻る</a>
                     </div>

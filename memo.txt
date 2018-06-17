@@ -56,8 +56,8 @@
     chat/indexをチャットボード一覧表示として名前空間を追加で持たせるか？
         =>  後日検討
 タスク
-    board/search 検索処理実装
-    board/edit チャットボード編集画面
+    [x]board/search 検索処理実装
+    [x]board/edit チャットボード編集画面
     board/update チャットボード内容更新
     chat/show => chat/indexに変更（検討結果次第
     chat/edit チャット編集モーダル実装（chat/indexで別ビューに切り出さない状態で行う可能性

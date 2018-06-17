@@ -36,6 +36,7 @@
                                             {{Form::open(['route' => ['boards.destroy', $board->id], 'method' => 'delete', 'class' => 'form_inline', 'onsubmit' => "return confirm('本当に消しますか？');"])}}
                                             <button type="submit" class="btn btn-md  btn-danger original-button"><i class="glyphicon glyphicon-trash"></i> 削　除</button>
                                             {{Form::close()}}
+                                            <a class="btn btn-warning btn-md original-button" href="{{route('boards.edit', $board->id)}}"><i class="glyphicon glyphicon-pencil"></i> 編　集</a>
                                         @endif
                                     </span>
                                     <div style="clear:both"></div>
