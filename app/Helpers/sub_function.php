@@ -22,3 +22,8 @@ function user($key, $str = null) {
     }
     return auth()->user()->$key;
 }
+
+function users()
+{
+    return auth()->user();
+}

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\Models\Board;
 use App\Http\Requests\ChatRequest;
+use App\Events\ChatInsertEvent;
+use Illuminate\Support\Facades\Redis;
 class ChatController extends Controller
 {
     /**
@@ -36,8 +38,10 @@ class ChatController extends Controller
      */
     public function store(ChatRequest $request)
     {
-        $chats = Chat::create($request->all());
-        return redirect()->route('chat.show', $chats->boards_id);
+        $user = Auth::user();
+        $chat = Chat::create($request->all());
+        broadcast(new ChatInsertEvent($chat->boards_id, $user, $chat))->toOthers();
+        return ["chat" => $chat];
     }
 
     /**
