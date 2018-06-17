@@ -14,9 +14,17 @@ class BoardsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request)
 	{
-		$boards = Board::paginate();
+        if ($request->all()) {
+            $boards = Board::
+            where('title', 'like', "%{$request['title']}%")
+            ->where('description', 'like', "%{$request['description']}%")
+            ->paginate();
+        } else {
+            $boards = Board::paginate();
+        }
+
 		return view('boards.index', compact('boards'));
 	}
 
