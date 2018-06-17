@@ -19,7 +19,7 @@
             @include('common.error')
             <div class="panel-body">
                 @if($board->id)
-                {{Form::open(['route' => ['boards.update', $board->id]])}}
+                {{Form::open(['route' => ['boards.update', $board->id], 'method' => 'put'])}}
                 @else
                 {{Form::open(['route' => 'boards.store'])}}
                 @endif

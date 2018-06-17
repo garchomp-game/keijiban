@@ -41,7 +41,7 @@ class BoardsController extends Controller
 	public function store(BoardRequest $request)
 	{
 		Board::create($request->all());
-    		return redirect()->route('boards.index')->with('message', 'Created successfully.');
+		return redirect()->route('boards.index');
 	}
 
 	public function edit(Board $board)
@@ -55,7 +55,7 @@ class BoardsController extends Controller
 		$this->authorize('update', $board);
 		$board->update($request->all());
 
-		return redirect()->route('boards.show', $board->id)->with('message', 'Updated successfully.');
+		return redirect()->route('boards.index', $board->id);
 	}
 
 	public function destroy(Board $board)
