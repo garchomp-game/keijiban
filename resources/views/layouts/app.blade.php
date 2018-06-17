@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>掲示板</title>
 
     <!-- Styles -->
     <!-- Latest compiled and minified CSS -->
