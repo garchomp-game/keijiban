@@ -3,6 +3,17 @@
 @section('content')
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
+    {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
+        @if ($errors->first('comment'))
+            <p style="color:red;">{{$errors->first('comment')}}</p>
+        @endif
+        <input type="hidden" name="boards_id" value="{{request()->chat}}">
+        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+        <textarea class="form-control" name="comment" rows="6"></textarea>
+        <input class="btn btn-md btn-primary pull-left" style="margin:10px 0" type="submit" name="submit" value="送信">
+        <a href="{{route('boards.index')}}" class="pull-right btn btn-md btn-success" style="margin:10px 0">一覧に戻る</a>
+    {{Form::close()}}
+    <div style="clear:both"></div>
         <div class="panel panel-default original-chat-bord" id="ul_list">
             <div class="panel-body">
                 <h2>{{$board->title}}</h2>
@@ -16,7 +27,10 @@
                                     <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
                                         <p style="margin:0;">{{$chat->user->name}}</p>
                                         <hr style="margin:10px 0;">
-                                        <span class=" original-span-with original-comment-style">{{$chat->comment}}</span>
+                                        <span class=" original-span-with original-comment-style pull-left">{{$chat->comment}}</span>
+                                        {{Form::open(['route' => ['chat.destroy', $chat->id], 'method' => 'delete', 'name' => "destroy{$chat->id}"])}}
+                                            <a class="btn btn-danger pull-right" href="javascript:destroy{{$chat->id}}.submit()">削除</a>
+                                        {{Form::close()}}
                                         <div style="clear:both"></div>
                                     </a>
                                     {{-- </a> --}}
@@ -28,17 +42,6 @@
                 </ul>
             </div>
         </div>
-        {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
-            <p>コメント</p>
-            @if ($errors->first('comment'))
-                <p style="color:red;">{{$errors->first('comment')}}</p>
-            @endif
-            <input type="hidden" name="boards_id" value="{{request()->chat}}">
-            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-            <textarea class="form-control" name="comment" rows="6"></textarea>
-            <input class="btn btn-md btn-primary pull-left" style="margin:10px 0" type="submit" name="submit" value="送信">
-        {{Form::close()}}
-        <a href="{{route('boards.index')}}" class="pull-right btn btn-md btn-success">一覧に戻る</a>
     </div>
 </div>
 {{-- TODO:モーダル表示 --}}

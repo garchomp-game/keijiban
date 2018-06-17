@@ -58,10 +58,10 @@
 タスク
     [x]board/search 検索処理実装
     [x]board/edit チャットボード編集画面
-    board/update チャットボード内容更新
-    chat/show => chat/indexに変更（検討結果次第
-    chat/edit チャット編集モーダル実装（chat/indexで別ビューに切り出さない状態で行う可能性
-    chat/update チャット編集適応
+    [x]board/update チャットボード内容更新
+    [検討]chat/show => chat/indexに変更（検討結果次第
+    [検討]chat/edit チャット編集モーダル実装（chat/indexで別ビューに切り出さない状態で行う可能性
+    [検討]chat/update チャット編集適応
     chat/destroy チャット削除（chatテーブルから該当削除することで全体適応。物理削除とする。
 
 

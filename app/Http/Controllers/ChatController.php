@@ -87,7 +87,8 @@ class ChatController extends Controller
      */
     public function destroy(Chat $chat)
     {
-        $chat->destroy();
-        return view('chat.destroy')->with();
+        $board_id = $chat->board->id;
+        $chat->delete();
+        return redirect()->route('chat.show', $board_id);
     }
 }
