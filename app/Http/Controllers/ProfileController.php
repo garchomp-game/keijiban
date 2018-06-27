@@ -46,9 +46,6 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        if (user('id') == $profile->id) {
-            return view('profile.index');
-        }
         return view('profile.show', compact('profile'));
     }
 
@@ -77,7 +74,7 @@ class ProfileController extends Controller
         $profile->hobby = $request['hobby'];
         $profile->description = $request['description'];
         $profile->save();
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.show', $profile->id);
     }
 
     /**

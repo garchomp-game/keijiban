@@ -21,5 +21,8 @@
             </tr>
         </tbody>
     </table>
+    @if (user('id') == $profile->id)
+        <a class="btn btn-md btn-success" href="{{route('profile.edit', user('id'))}}">マイページ編集</a>
+    @endif
 </div>
 @endsection
