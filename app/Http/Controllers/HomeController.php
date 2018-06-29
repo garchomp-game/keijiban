@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home');
+        $boards = \App\Models\Board::paginate();
+        return view('home', compact('boards'));
     }
 }

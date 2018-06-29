@@ -25,7 +25,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
 </head>
 <body>
     <div id="app">
@@ -70,10 +69,10 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
-                            </li>
-                            <li><a href="{{ route('profile.show', user('id')) }}">マイページ</a></li>
-                            <li><a href="{{ route('profile.index') }}">ユーザー一覧</a></li>
-                            <li><a href="{{ route('boards.index') }}">掲示板一覧</a></li>
+                        </li>
+                        <li><a href="{{ route('profile.show', user('id')) }}">マイページ</a></li>
+                        <li><a href="{{ route('profile.index') }}">ユーザー一覧</a></li>
+                        <li><a href="{{ route('boards.index') }}">掲示板一覧</a></li>
                     @endguest
                 </ul>
             </div>
