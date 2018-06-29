@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="container">
-        <div class="pull-left col-md-9 col-lg-9">
+        {{-- <div class="pull-left col-md-9 col-lg-9"> --}}
             <h2 class='text-center' style="margin-bottom:100px;">掲示板サイトへようこそ！</h2>
             {{Form::open(['route' => 'boards.index', 'method' => 'get', 'class' => 'form-group'])}}
             <!-- Search form -->
             <div class="md-form" style="margin-bottom:10px;">
                 <div class="col-md-7"></div>
-                <input class="col-md-4" type="text" name="search_box" placeholder="掲示板タイトル" aria-label="掲示板タイトル">
+                <input class="col-md-4" type="text" name="search_text" placeholder="掲示板タイトル" aria-label="掲示板タイトル">
             </div>
             <button type="submit" name="submit" class="col-md-1 btn-success"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             {{Form::close()}}
@@ -32,9 +32,9 @@
             @else
                 <h3 class="text-center alert alert-info">まだ掲示板がありません</h3>
             @endif
-        </div>
-        <div class="pull-right col-md-3 col-lg-3 bg-success">
+        {{-- </div> --}}
+        {{-- <div class="pull-right col-md-3 col-lg-3 bg-success">
             <p>ここにsnsやお知らせなどを設置する…予定長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文</p>
-        </div>
+        </div> --}}
     </div>
 @endsection

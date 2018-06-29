@@ -18,8 +18,8 @@ class BoardsController extends Controller
 	{
         if ($request->all()) {
             $boards = Board::
-            where('title', 'like', "%{$request['title']}%")
-            ->where('description', 'like', "%{$request['description']}%")
+            where('title', 'like', "%{$request['search_text']}%")
+            ->where('description', 'like', "%{$request['search_text']}%")
             ->paginate();
         } else {
             $boards = Board::paginate();
