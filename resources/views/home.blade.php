@@ -8,7 +8,7 @@
             <!-- Search form -->
             <div class="md-form" style="margin-bottom:10px;">
                 <div class="col-md-7"></div>
-                <input class="col-md-4" type="text" name="search_text" placeholder="掲示板タイトル" aria-label="掲示板タイトル">
+                <input class="col-md-4" type="text" name="search_text" placeholder="検索" aria-label="検索">
             </div>
             <button type="submit" name="submit" class="col-md-1 btn-success"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             {{Form::close()}}
