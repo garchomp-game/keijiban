@@ -11,13 +11,13 @@
         </thead>
         <tbody>
             <tr>
-                <td class="row">性別：{{$profile->sex or '未設定'}}</td>
+                <td class="row" style="padding:20px 0;"><span class='text-right col-md-2 col-lg-2'>性　　別</span><span class="col-md-10 col-lg-10">{{$profile->sex or '未設定'}}</span></td>
             </tr>
             <tr>
-                <td class="row">趣味：{{$profile->hobby or '未設定'}}</td>
+                <td class="row" style="padding:20px 0;"><span class='text-right col-md-2 col-lg-2'>趣　　味</span><span class="col-md-10 col-lg-10">{{$profile->hobby or '未設定'}}</span></td>
             </tr>
             <tr>
-                <td class="row">自己紹介:{{$profile->description or '未設定'}}</td>
+                <td class="row" style="padding:20px 0;"><span class='text-right col-md-2 col-lg-2'>自己紹介</span><span class="col-md-10 col-lg-10">{{$profile->description or '未設定'}}</span></td>
             </tr>
         </tbody>
     </table>
