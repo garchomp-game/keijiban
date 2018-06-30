@@ -22,8 +22,7 @@
                         <a class="list-group-item" href="{{route('boards.show', $board->id)}};">
                             <h3 class="pull-left" style="display:block; margin:0 0 10px;">{{$board->title}}</h3>
                             <div style="clear:both"></div>
-                            <span class="pull-left original-span-with" style="float:left;">{{$board->description}}</span><br>
-                            <div style="clear:both"></div>
+                            <span class="pull-left original-span-with" style="float:left;">{{$board->description}}</span>
                             <div style="clear:both"></div>
                         </a>
                     @endforeach

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Gallery;
+use App\Models\User;
 class GalleryController extends Controller
 {
     /**
@@ -11,9 +12,8 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
     }
 
     /**
@@ -43,9 +43,9 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('gallery.show', compact('user'));
     }
 
     /**

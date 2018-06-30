@@ -24,6 +24,7 @@ Route::post('/unfollow', '#FollowController@unfollow')->name('unfollow')->middle
 // resource群
 Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('profile', 'ProfileController')->middleware('auth');
+Route::resource('gallery', 'GalleryController')->middleware('auth');
 
 Route::resource('boards', 'BoardsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']])->middleware('auth');
 Route::resource('chat', 'ChatController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']])->middleware('auth');
