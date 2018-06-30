@@ -19,7 +19,8 @@ Route::get('/', 'HomeController@index')->name('root_path');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // 個別ルート
-
+Route::post('/follow', '#FollowController@follow')->name('follow')->middleware('auth');
+Route::post('/unfollow', '#FollowController@unfollow')->name('unfollow')->middleware('auth');
 // resource群
 Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('profile', 'ProfileController')->middleware('auth');

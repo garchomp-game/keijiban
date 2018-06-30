@@ -6,7 +6,9 @@
             @foreach ($profile as $key => $value)
                 <a href="{{route('profile.show', $value->id)}}" class='list-group-item row original-margin-15-0'>
                     <h3 class='col-md-4'>{{$value->name}}</h3>
-                    <p class="col-md-8">{{$value->description}}</p>
+                    <span class="col-md-7">{{$value->description}}</span>
+                    <span href="{{route('follow', $value->id)}}" class=" text-right col-md-1"
+                        style="font-size:36px;">💖</span>
                 </a>
             @endforeach
         </ul>
