@@ -29,6 +29,10 @@ class CreateGallerysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gallerys');
+        Schema::dropIfExists('galleries');
     }
 }
+
+/*
+
+*/

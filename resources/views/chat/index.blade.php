@@ -4,23 +4,39 @@
     <div class="container">
         <div class="col-md-10 col-md-offset-1">
             <h2 class="pull-left" style="margin:7px 0; font-size:36px; font-weight: bold;">{{$board->title}}</h2>
-            @if ($board->user_id == auth()->user()->id)
-                <a class="btn btn-md pull-right btn-danger" href="javascript:delete.submit();" style="margin:10px 0; margin-left:10px;"><i class="glyphicon glyphicon-trash"></i> 削　除</a>
-                <a class="btn btn-warning pull-right btn-md" style="margin:10px 0;" href="{{route('boards.edit', $board->id)}}"><i class="glyphicon glyphicon-pencil"></i> 編　集</a>
-            @endif
-            <div style="clear:both"></div>
-            <hr style="border:1px solid black; margin:3px 0 15px;">
-            {{Form::open(['route' => ['boards.destroy', $board->id], 'name' => 'delete'])}}
-            {{Form::close()}}
-            {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
-            @if ($errors->first('comment'))
-                <p style="color:red;">{{$errors->first('comment')}}</p>
-            @endif
-            <input type="hidden" name="boards_id" value="{{request()->chat}}">
-            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-            <textarea class="form-control" name="comment" rows="6"></textarea>
-            <input class="btn btn-primary pull-left" style="margin:10px 0; font-size:24px; padding:5px 30px;" type="submit" name="submit" value="送信">
-            {{Form::close()}}
+            @guest
+                {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
+                @if ($errors->first('comment'))
+                    <p style="color:red;">{{$errors->first('comment')}}</p>
+                @endif
+                <input type="hidden" name="boards_id" value="{{request()->chat}}">
+                <div style="clear:both"></div>
+                <span class="pull-left" style="font-size:24px; margin:15px; margin-left:0;">名前：</span>
+                <input type="text" name="name" class="pull-left form-control" style="margin:15px; width:40%;" value="">
+                <div style="clear:both"></div>
+                <p style="font-size:24px;">コメント：</p>
+                <textarea class="form-control" name="comment" rows="6"></textarea>
+                <input class="btn btn-primary pull-left" style="margin:10px 0; font-size:24px; padding:5px 30px;" type="submit" name="submit" value="送信">
+                {{Form::close()}}
+            @else
+                @if ($board->user_id == auth()->user()->id)
+                    <a class="btn btn-md pull-right btn-danger" href="javascript:delete.submit();" style="margin:10px 0; margin-left:10px;"><i class="glyphicon glyphicon-trash"></i> 削　除</a>
+                    <a class="btn btn-warning pull-right btn-md" style="margin:10px 0;" href="{{route('boards.edit', $board->id)}}"><i class="glyphicon glyphicon-pencil"></i> 編　集</a>
+                @endif
+                <div style="clear:both"></div>
+                <hr style="border:1px solid black; margin:3px 0 15px;">
+                {{Form::open(['route' => ['boards.destroy', $board->id], 'name' => 'delete'])}}
+                {{Form::close()}}
+                {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
+                @if ($errors->first('comment'))
+                    <p style="color:red;">{{$errors->first('comment')}}</p>
+                @endif
+                <input type="hidden" name="boards_id" value="{{request()->chat}}">
+                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                <textarea class="form-control" name="comment" rows="6"></textarea>
+                <input class="btn btn-primary pull-left" style="margin:10px 0; font-size:24px; padding:5px 30px;" type="submit" name="submit" value="送信">
+                {{Form::close()}}
+            @endguest
             <div style="clear:both"></div>
             <ul class="list-group">
                 @if($chats->count())

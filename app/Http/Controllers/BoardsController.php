@@ -41,7 +41,7 @@ class BoardsController extends Controller
 	public function store(BoardRequest $request)
 	{
 		Board::create($request->all());
-		return redirect()->route('boards.index');
+		return redirect()->route('home');
 	}
 
 	public function edit(Board $board)
@@ -55,7 +55,7 @@ class BoardsController extends Controller
 		$this->authorize('update', $board);
 		$board->update($request->all());
 
-		return redirect()->route('boards.index', $board->id);
+		return redirect()->route('home', $board->id);
 	}
 
 	public function destroy(Board $board)
@@ -66,6 +66,6 @@ class BoardsController extends Controller
                 }
                 $board->delete();
             });
-		return redirect()->route('boards.index');
+		return redirect()->route('home');
 	}
 }

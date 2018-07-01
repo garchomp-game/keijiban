@@ -15,9 +15,10 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('boards_id');
-            $table->integer('user_id');
-            $table->text('comment');
+            $table->integer('boards_id')->nullable();
+            $table->integer('user_id'); // ログインしていない場合はここに値は入らない。
+            $table->string('name')->nullable(); // ログインしている指定内にかかわらず必須
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
