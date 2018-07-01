@@ -53,7 +53,7 @@
 .original-list-group-item {
     border:none;
     background-color:#ddd;
-    border-radius:15px;
+    border-radius:15px 15px 15px 0;
     list-style:none;
     padding:10px;
 }

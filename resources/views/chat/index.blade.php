@@ -34,7 +34,7 @@
                 <input type="hidden" name="boards_id" value="{{request()->chat}}">
                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                 <textarea class="form-control" name="comment" rows="6"></textarea>
-                <input class="btn btn-primary pull-left" style="margin:10px 0; font-size:24px; padding:5px 30px;" type="submit" name="submit" value="送信">
+                <input class="btn btn-primary" style="margin:10px auto; display:block; width:300px; font-size:24px; padding:5px 30px;" type="submit" name="submit" value="送信">
                 {{Form::close()}}
             @endguest
             <div style="clear:both"></div>
