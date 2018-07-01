@@ -38,10 +38,10 @@
                 {{Form::close()}}
             @endguest
             <div style="clear:both"></div>
-            <ul class="list-group">
+            <ul class="original_class_chat_ul">
                 @if($chats->count())
                     @foreach($chats as $chat)
-                        <li class="list-group-item original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
+                        <li class=" original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
                             {{-- TODO:モーダル表示 --}}
                             {{-- <a class="original-chat-link-button" href="#user_modal" rel="modal:open"> --}}
                             <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
@@ -57,7 +57,7 @@
                         </li>
                     @endforeach
                 @else
-                    <li class="list-group-item">まだ投稿がありません</li>
+                    <li class="">まだ投稿がありません</li>
                 @endif
             </ul>
         </div>

@@ -39,11 +39,25 @@
     overflow: auto;
 
 }
-
+.original_class_chat_ul {
+    background-color:white;
+    height:calc(100vh - 400px);
+    border:none;
+    box-sizing:border-box;
+    width:100%;
+    padding:10px;
+}
+.original-list-group-item+.original-list-group-item {
+    margin-top:15px;
+}
 .original-list-group-item {
     border:none;
-    border-top:1px solid gray;
+    background-color:#ddd;
+    border-radius:15px;
+    list-style:none;
+    padding:10px;
 }
+
 .original-list-group-item:first-child {
     border:none;
 }
