@@ -20,12 +20,12 @@
                 {{Form::close()}}
             @else
                 @if ($board->user_id == auth()->user()->id)
-                    <a class="btn btn-md pull-right btn-danger" href="javascript:delete.submit();" style="margin:10px 0; margin-left:10px;"><i class="glyphicon glyphicon-trash"></i> 削　除</a>
+                    <a class="btn btn-md pull-right btn-danger" href="javascript:board_destroy.submit()" style="margin:10px 0; margin-left:10px;"><i class="glyphicon glyphicon-trash"></i> 削　除</a>
                     <a class="btn btn-warning pull-right btn-md" style="margin:10px 0;" href="{{route('boards.edit', $board->id)}}"><i class="glyphicon glyphicon-pencil"></i> 編　集</a>
                 @endif
                 <div style="clear:both"></div>
                 <hr style="border:1px solid black; margin:3px 0 15px;">
-                {{Form::open(['route' => ['boards.destroy', $board->id], 'name' => 'delete'])}}
+                {{Form::open(['route' => ['boards.destroy', $board->id], 'name' => 'board_destroy', 'method' => 'delete'])}}
                 {{Form::close()}}
                 {{Form::open(['route' => 'chat.store', 'class' => 'form-group'])}}
                 @if ($errors->first('comment'))
