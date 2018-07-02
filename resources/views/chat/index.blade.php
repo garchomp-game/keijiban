@@ -33,6 +33,7 @@
                 @endif
                 <input type="hidden" name="boards_id" value="{{request()->chat}}">
                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                <input type="hidden" name="name" value="{{auth()->user()->name}}">
                 <textarea class="form-control" name="comment" rows="6"></textarea>
                 <input class="btn btn-primary" style="margin:10px auto; display:block; width:300px; font-size:24px; padding:5px 30px;" type="submit" name="submit" value="送信">
                 {{Form::close()}}
@@ -45,7 +46,7 @@
                             {{-- TODO:モーダル表示 --}}
                             {{-- <a class="original-chat-link-button" href="#user_modal" rel="modal:open"> --}}
                             <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
-                                <p style="margin:0;">{{$chat->user->name}}</p>
+                                <p style="margin:0;">{{$chat->name}}</p>
                                 <hr style="margin:10px 0;">
                                 <span class=" original-span-with original-comment-style pull-left">{{$chat->comment}}</span>
                                 {{Form::open(['route' => ['chat.destroy', $chat->id], 'method' => 'delete', 'name' => "destroy{$chat->id}"])}}
