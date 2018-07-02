@@ -52,16 +52,15 @@
 }
 .original-list-group-item_left {
     border:none;
-    width:70%;
     background-color:#ddd;
     border-radius:15px 15px 15px 0;
     list-style:none;
     padding:10px;
+    float:left;
 }
 
 .original-list-group-item_right {
     border:none;
-    width:70%;
     float:right;
     background-color:rgba(0,0,255,.3);
     border-radius:15px 15px 0 15px;

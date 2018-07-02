@@ -43,22 +43,26 @@
                 @if($chats->count())
                     @foreach($chats as $chat)
                         @if (auth()->check() && auth()->user()->id == $chat->user_id)
-                        <li class=" original-list-group-item_right original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
-                        @else
-                        <li class=" original-list-group-item_left original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
-                        @endif
-                            {{-- TODO:モーダル表示 --}}
-                            {{-- <a class="original-chat-link-button" href="#user_modal" rel="modal:open"> --}}
+                        <li class=" original-list-group-item_right original-list-group-item list-group-item-action" style="max-width:calc(100% - 80px);" id="msg_id{{$chat->id}}">
                             <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
                                 <p style="margin:0;">{{$chat->name}}</p>
                                 <hr style="margin:10px 0;">
-                                <span class=" original-span-with original-comment-style pull-left">{{$chat->comment}}</span>
+                                <span class="pull-left">{{$chat->comment}}</span>
                                 {{Form::open(['route' => ['chat.destroy', $chat->id], 'method' => 'delete', 'name' => "destroy{$chat->id}"])}}
-                                <a class="btn pull-right original-danger-link" href="javascript:destroy{{$chat->id}}.submit()">削除</a>
                                 {{Form::close()}}
                                 <div style="clear:both"></div>
                             </a>
-                            {{-- </a> --}}
+                        @else
+                        <li class=" original-list-group-item_left original-list-group-item list-group-item-action" style="max-width: calc(100% - 80px);" id="msg_id{{$chat->id}}">
+                            <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
+                                <p style="margin:0;" class="text-left">{{$chat->name}}</p>
+                                <hr style="margin:10px 0;">
+                                <span class=" text-left">{{$chat->comment}}</span>
+                                {{Form::open(['route' => ['chat.destroy', $chat->id], 'method' => 'delete', 'name' => "destroy{$chat->id}"])}}
+                                {{Form::close()}}
+                                <div style="clear:both"></div>
+                            </a>
+                        @endif
                         </li>
                         <div style="clear:both"></div>
                     @endforeach
