@@ -42,7 +42,11 @@
             <ul class="original_class_chat_ul">
                 @if($chats->count())
                     @foreach($chats as $chat)
-                        <li class=" original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
+                        @if (auth()->check() && auth()->user()->id == $chat->user_id)
+                        <li class=" original-list-group-item_right original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
+                        @else
+                        <li class=" original-list-group-item_left original-list-group-item list-group-item-action" id="msg_id{{$chat->id}}">
+                        @endif
                             {{-- TODO:モーダル表示 --}}
                             {{-- <a class="original-chat-link-button" href="#user_modal" rel="modal:open"> --}}
                             <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
@@ -50,12 +54,13 @@
                                 <hr style="margin:10px 0;">
                                 <span class=" original-span-with original-comment-style pull-left">{{$chat->comment}}</span>
                                 {{Form::open(['route' => ['chat.destroy', $chat->id], 'method' => 'delete', 'name' => "destroy{$chat->id}"])}}
-                                <a class="btn btn-danger pull-right" href="javascript:destroy{{$chat->id}}.submit()">削除</a>
+                                <a class="btn pull-right original-danger-link" href="javascript:destroy{{$chat->id}}.submit()">削除</a>
                                 {{Form::close()}}
                                 <div style="clear:both"></div>
                             </a>
                             {{-- </a> --}}
                         </li>
+                        <div style="clear:both"></div>
                     @endforeach
                 @else
                     <li class="">まだ投稿がありません</li>
