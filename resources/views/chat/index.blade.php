@@ -46,7 +46,7 @@
                         <li class=" original-list-group-item_right original-list-group-item list-group-item-action" style="max-width:calc(100% - 80px);" id="msg_id{{$chat->id}}">
                             <a href="{{route('profile.show', $chat->user_id)}}" class="original-chat-link-button">
                                 <p style="margin:0;">{{$chat->name}}</p>
-                                <hr style="margin:10px 0;">
+                                <hr style="margin:5px 0;">
                                 <span class="pull-left">{{$chat->comment}}</span>
                                 {{Form::open(['route' => ['chat.destroy', $chat->id], 'method' => 'delete', 'name' => "destroy{$chat->id}"])}}
                                 {{Form::close()}}
