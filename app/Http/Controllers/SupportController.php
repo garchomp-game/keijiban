@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Gallery;
+use App\Models\Support;
 use App\Models\User;
-class GalleryController extends Controller
+class SupportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class GalleryController extends Controller
      */
     public function index(User $user)
     {
-	gallery = Gallery::find($user->id);
-	return view('gallery.index',compact('gallery'));
+
     }
 
     /**
@@ -25,7 +24,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('gallery.create');
+        return view('support.create');
     }
 
     /**
@@ -36,8 +35,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        Gallery::create($request->all());
-	return resource()->route('gallery.index');
+	    Support::create($request->all());
     }
 
     /**
@@ -48,7 +46,6 @@ class GalleryController extends Controller
      */
     public function show(User $user)
     {
-        return view('gallery.show', compact('user'));
     }
 
     /**
@@ -82,7 +79,6 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        Gallery::find($id)->destroy();
-	return resource()->route('gallery.index');
+        //
     }
 }
