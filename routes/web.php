@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +24,10 @@ Route::post('/unfollow', '#FollowController@unfollow')->name('unfollow');
 // resource群
 Route::resource('users', 'UsersController');
 Route::resource('profile', 'ProfileController');
-Route::resource('gallery', 'GalleryController');
+Route::prefix('{id}')->group(function() {
+	Route::resource('gallery', 'GalleryController');
+});
 
 Route::resource('boards', 'BoardsController');
 Route::resource('chat', 'ChatController');
-Route::resurce('support', 'SupportController');
+Route::resource('support', 'SupportController');

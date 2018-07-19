@@ -1,8 +1,8 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('content')
 <div class="container">
-        <a href="{{ route('gallery.show', $profile->id) }}" class="btn btn-success" style="margin-bottom:15px;">ギャラリー</a>
+        <a href="{{ route('gallery.index', user('id')) }}" class="btn btn-success" style="margin-bottom:15px;">ギャラリー</a>
     <table class="table table-bordered">
         <thead>
             <tr>

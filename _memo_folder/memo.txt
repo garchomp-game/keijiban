@@ -10,3 +10,18 @@ andで検索していたところをor検索に変えて
 title description変更するようにする
 
 掲示板匿名参加実装
+
+テーブル定義メモ
+create_gallerys_table
+	title:string
+	description:text
+	content_type:string
+	content_description:text
+
+create_supports_table
+	title:string
+	name:string
+	email:string
+	description:text
+
+
