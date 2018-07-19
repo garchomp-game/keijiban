@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use App\Http\Requests\GalleryRequest;
 use App\Models\User;
 class GalleryController extends Controller
 {
@@ -14,8 +15,8 @@ class GalleryController extends Controller
      */
     public function index(User $user)
     {
-	gallery = Gallery::find($user->id);
-	return view('gallery.index',compact('gallery'));
+	$gallery = Gallery::where('id', $user->id)->get();
+	return view('gallery.index',compact('gallery', 'user'));
     }
 
     /**
@@ -23,9 +24,9 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        return view('gallery.create');
+        return view('gallery.create', compact('user'));
     }
 
     /**
@@ -34,7 +35,7 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
         Gallery::create($request->all());
 	return resource()->route('gallery.index');
@@ -69,7 +70,7 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GalleryRequest $request, $id)
     {
         //
     }

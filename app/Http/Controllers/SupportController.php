@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Support;
+use App\Http\Requests\SupportRequest;
 use App\Models\User;
 class SupportController extends Controller
 {
@@ -33,7 +34,7 @@ class SupportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupportRequest $request)
     {
 	    Support::create($request->all());
     }

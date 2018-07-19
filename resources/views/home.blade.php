@@ -16,21 +16,19 @@
 
             </div>
             <h3>新着部屋一覧</h3>
-            @if($boards->count())
-                <ul class="list-group">
-                    @foreach($boards as $board)
-                        <a class="list-group-item" href="{{route('boards.show', $board->id)}};" style="margin-bottom:30px; border-radius:10px;">
-                            <h3 class="pull-left" style="display:block; margin:0 0 10px;">{{$board->title}}</h3>
-                            <div style="clear:both"></div>
-                            <span class="pull-left original-span-with" style="float:left;">{{$board->description}}</span>
-                            <div style="clear:both"></div>
-                        </a>
-                    @endforeach
-                </ul>
+        <ul class="list-group">
+            @forelse($boards as $board)
+                <a class="list-group-item" href="{{route('boards.show', $board->id)}};" style="margin-bottom:30px; border-radius:10px;">
+                    <h3 class="pull-left" style="display:block; margin:0 0 10px;">{{$board->title}}</h3>
+                    <div style="clear:both"></div>
+                    <span class="pull-left original-span-with" style="float:left;">{{$board->description}}</span>
+                    <div style="clear:both"></div>
+                </a>
                 {!! $boards->render() !!}
-            @else
+            @empty
                 <h3 class="text-center alert alert-info">まだ掲示板がありません</h3>
-            @endif
+            @endforelse
+        </ul>
         {{-- </div> --}}
         {{-- <div class="pull-right col-md-3 col-lg-3 bg-success">
             <p>ここにsnsやお知らせなどを設置する…予定長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文長文</p>

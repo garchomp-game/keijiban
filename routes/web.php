@@ -24,7 +24,7 @@ Route::post('/unfollow', '#FollowController@unfollow')->name('unfollow');
 // resource群
 Route::resource('users', 'UsersController');
 Route::resource('profile', 'ProfileController');
-Route::prefix('{id}')->group(function() {
+Route::prefix('{user}')->group(function() {
 	Route::resource('gallery', 'GalleryController');
 });
 
