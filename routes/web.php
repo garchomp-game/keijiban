@@ -22,9 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/follow', '#FollowController@follow')->name('follow');
 Route::post('/unfollow', '#FollowController@unfollow')->name('unfollow');
 // resource群
-Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('users', 'UsersController');
 Route::resource('profile', 'ProfileController');
 Route::resource('gallery', 'GalleryController');
 
-Route::resource('boards', 'BoardsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
-Route::resource('chat', 'ChatController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('boards', 'BoardsController');
+Route::resource('chat', 'ChatController');
+Route::resurce('support', 'SupportController');
