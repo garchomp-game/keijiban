@@ -5,7 +5,7 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\SlackMessage;
 
 class SupportSlack extends Notification
 {
@@ -16,9 +16,10 @@ class SupportSlack extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title, $description)
     {
-        //
+        $this->title = $title;
+        $this->description = $description;
     }
 
     /**
@@ -29,21 +30,24 @@ class SupportSlack extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['slack'];
     }
 
     /**
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return \Illuminate\Notifications\Messages\SlackMessage
      */
-    public function toMail($notifiable)
+    public function toSlack($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        return (new SlackMessage)
+                    ->content('掲示板サイトにお問い合わせがありました')
+                    ->attachment(function ($attachment) {
+                        $attachment->title($this->title)
+                        ->content("------------------------------------------------------------------------")
+                        ->content($this->description);
+                    });
     }
 
     /**

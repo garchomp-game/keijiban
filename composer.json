@@ -6,12 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "erusev/parsedown": "*",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "*",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.0",
-	"guzzlehttp/guzzle": "*",
-	"erusev/parsedown": "*"
+        "league/flysystem-aws-s3-v3": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

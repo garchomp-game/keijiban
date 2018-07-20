@@ -68,6 +68,7 @@
                         <li><a href="{{ route('profile.show', user('id')) }}">マイページ</a></li>
                         <li><a href="{{ route('profile.index') }}">ユーザー一覧</a></li>
                         <li><a href="{{ route('boards.create') }}">掲示板作成</a></li>
+                        <li><a href="{{ route('support.create') }}">お問い合わせ</a></li>
                     @endguest
                 </ul>
             </div>

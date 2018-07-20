@@ -102,3 +102,7 @@
 .original-margin-15-0{
     margin:15px 0;
 }
+
+.original-gallery-index-ul:not(:nth-child(3)) {
+    border-right:2px solid gray;
+}
